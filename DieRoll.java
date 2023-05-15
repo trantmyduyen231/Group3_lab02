@@ -21,18 +21,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
 
-public class  {
-    private int ndice;
-    private int nsides;
-    private int bonus;
-    private static Random rnd;
-//    static{
+public class  DieRoll{ //thieu DieRoll
+    private final int ndice; // add final
+    private final int nsides; // add final
+    private final int bonus; // add final
+    private static final Random rnd; // add final
+   static{   //xoa //
 	rnd=new Random();
     }
     public DieRoll(int ndice,
 		   int nsides,
 		   int bonus) {
-	thisndice=ndice;
+	this.ndice=ndice; // them dau cham o this voi ndice
 	this.nsides=nsides;
 	this.bonus=bonus;
     }
@@ -40,7 +40,7 @@ public class  {
 	RollResult r=new RollResult(bonus);
 	for(int i=0;i<ndice;i++) {
 	    int roll=rnd.nextInt(nsides)+1;
-	    r.addResult(roll)
+	    r.addResult(roll);  // thieu dau " ;"
 	}
 	return r;
     }
@@ -50,7 +50,7 @@ public class  {
 	    ans= ans+"+"+bonus;
 	}
 	else if(bonus<0) {
-	    ans:=ans+bonus;
+	    ans=ans+bonus;  // xoa ":"
 	}
 	return ans;
     }

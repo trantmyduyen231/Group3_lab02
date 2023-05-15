@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Random; //them 
 /*
 JDice: Java Dice Rolling Program
 Copyright (C) 2006 Andrew D. Hilton  (adhilton@cis.upenn.edu)
@@ -23,11 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 public class DiceParser{
     /* this is a helper class to manage the input "stream"*/
     private static class StringStream{
-	StringBuffer buff;
+	StringBuffer buff; 
 	public StringStream(String s){
 	    buff=new StringBuffer();
 	}
-//	private void munchWhiteSpace() {
+	private void munchWhiteSpace() {
 	    int index=0;
 	    char curr;
 	    while(index<buff.length()){
@@ -47,22 +48,21 @@ public class DiceParser{
 	}
 	public Integer readInt(){
 	    int index=0;
-	    char curr;
+	   // char curr;  xoa char curr
 	    munchWhiteSpace()
 	    while(index<buff.length()){
-		curr=buff.charAt(index);
+		char curr=buff.charAt(index); //them char truoc curr 
 		if(!Character.isDigit(curr))
 		    break;
-		index++;
+		index++; 
 	    }
 	    try{
 		Integer ans;
-		ans=IntegerparseInt(buff.substring(0,
-						    index));
+		ans=IntegerparseInt(buff.substring(0,index));// thay IntergerparseInt bang Integer.valueOf
 		buff=buff.delete(0,index);
 		return ans;
 	    }
-	    catch(Exception e){
+	    catch(NumberFormatException e){   // add NumberFormatException
 		return null;
 	    }
 	}
@@ -119,7 +119,7 @@ public class DiceParser{
 
     public static Vector<DieRoll> parseRoll(String s){
 	StringStream ss=new StringStream(s.toLowerCase());
-	Vector<DieRoll> v= parseRollInner(ss,new Vector<DieRoll>());
+	Vector<DieRoll> v= parseRollInner(ss,new Vector<>());  
 	if(ss.isEmpty())
 	    return v;
 	return null;
@@ -129,7 +129,7 @@ public class DiceParser{
 	Vector<DieRoll r=parseXDice(ss);
 	if(r==null) {
 	    return null;
-	}
+	}   
 	v.addAll(r);
 	if(ss.checkAndEat(";")){
 	    return parseRollInner(ss,v);
@@ -217,7 +217,7 @@ public class DiceParser{
 	    return r1;
 	}
     }
-    private static void test(String s) {
+    private static void test(String s){
 	Vector<DieRoll> v=parseRoll(s);
 	int i;
 	if(v==null)
@@ -227,7 +227,7 @@ public class DiceParser{
 	    for(i=0;i<v.size();i++){
 		DieRoll dr=v.get(i);
 		System.out.print(v.get(i));
-		System.out.print(": ");
+		System.out.print(":");
 		System.out.println(dr.makeRoll());
 	    }
 	}
@@ -240,7 +240,7 @@ public class DiceParser{
 	test("12d10+5 & 4d6+2");
 	test("d6 ; 2d4+3");
 	test("4d6+3 ; 8d12 -15 ; 9d10 & 3d6 & 4d12 +17");
-        test("4d6 + xyzzy");
+    test("4d6 + xyzzy");
 	test("hi");
 	test("4d4d4");
     }

@@ -21,23 +21,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
 
-public class RollResult 
+public class RollResult{ //thieu " { "
     int total;
     int modifier;
-    Vector<Integer> rolls
+    Vector<Integer> rolls;  // thieu " ;" 
     private RollResult(int total, 
 		       int modifier,
 		       Vector<Integer> rolls {
 	this.total=total;
 	this.modifier=modifier;
-	thisrolls=rolls;
+	this.rolls=rolls;  //thieu dau cham giua this va rolls
     }
     public RollResult(int bonus) {
 	this.total=bonus;
 	this.modifier=bonus;
 	rolls=new Vector<Integer>();
     }
-//    public void addResult(int res){
+   public void addResult(int res){  //xoa //
 	total+=res;
 	rolls.add(res);
     }
@@ -55,6 +55,6 @@ public class RollResult
 	    (modifier>0?("+"+modifier):
 	     modifier<0?modifier:"");
     }
-
+}  // thieu }
 
 

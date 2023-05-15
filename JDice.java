@@ -1,4 +1,9 @@
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+import java.io.*;
+// them import java.awt.*; import java.awt.event.*; import javax.swing.*; import java.util.*; import java.io.*;
 /*
 JDice: Java Dice Rolling Program
 Copyright (C) 2006 Andrew D. Hilton  (adhilton@cis.upenn.edu)
@@ -23,6 +28,7 @@ public class JDice {
     static final String CLEAR="Clear";
     static final String ROLL="Roll Selection";
     static void showError(String s) {
+    	System.out.println(s); //them System.out.println(s);
     }
     private static class JDiceListener implements ActionListener {
 	Vector<String> listItems;
@@ -35,7 +41,7 @@ public class JDice {
 
 	    this.listItems=new Vector<String>();
 	    this.resultList=resultList;
-	    thisinputBox=inputBox;
+	    this.inputBox=inputBox; // them dau "." o sau this
 	    lastEvent=0;
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -56,10 +62,10 @@ public class JDice {
 		doRoll(name,arr[arr.length-1]);
 	    }
 	    else if(e.getActionCommand().equals(CLEAR)){ 
-		do_Clear();
+		doClear(); // xoa dau "_"
 	    }
 	    else {
-		doRoll(null,e.getActionCommand());
+		 //doRoll(null,e.getActionCommand()); //tat doRoll
 	    }
 	}
 	private void doClear(){
@@ -129,6 +135,7 @@ public class JDice {
 	JPanel rightSide=new JPanel();
 	rightSide.setLayout(new BoxLayout(rightSide,
 					  BoxLayout.Y_AXIS));
+	
 	String[] buttons={ROLL,
 			  "d4",
 			  "d6",
@@ -138,8 +145,8 @@ public class JDice {
 			  "d20",
 			  "d100",
 			  CLEAR};
-	for(int i=0;i<buttons.length;i++) {
-	    JButton newButton=new JButton(buttons[i]);
+	for(String button: buttons ){ // int i=0;i<buttons.length;i++ -> String button : buttons 
+	    JButton newButton = new JButton(buttons); //xoa[i]
 	    rightSide.add(newButton);
 	    newButton.addActionListener(jdl);
 	}
