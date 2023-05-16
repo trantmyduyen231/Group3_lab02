@@ -44,12 +44,12 @@ public class DiceParser{
 	    return buff.toString().equals("");
 	}
 	public Integer getInt(){
-	    readInt();
+	    return readInt();  //return readInd
 	}
 	public Integer readInt(){
 	    int index=0;
 	   // char curr;  xoa char curr
-	    munchWhiteSpace()
+	    munchWhiteSpace();  //thieu ;
 	    while(index<buff.length()){
 		char curr=buff.charAt(index); //them char truoc curr 
 		if(!Character.isDigit(curr))
@@ -58,7 +58,7 @@ public class DiceParser{
 	    }
 	    try{
 		Integer ans;
-		ans=IntegerparseInt(buff.substring(0,index));// thay IntergerparseInt bang Integer.valueOf
+		ans=Integer.valueOf(buff.substring(0,index));// thay IntergerparseInt bang Integer.valueOf
 		buff=buff.delete(0,index);
 		return ans;
 	    }
@@ -126,7 +126,7 @@ public class DiceParser{
     }
     private static Vector<DieRoll> parseRollInner(StringStream ss,
 						   Vector<DieRoll> v){
-	Vector<DieRoll r=parseXDice(ss);
+	Vector<DieRoll> r=parseXDice(ss); //thieu >
 	if(r==null) {
 	    return null;
 	}   

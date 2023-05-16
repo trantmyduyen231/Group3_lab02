@@ -55,7 +55,7 @@ public class JDice {
 		String[] arr=s.split("=");
 		String name="";
 		for(int i=0;i<arr.length-2;i++) {
-		    name=arr[i]+"="
+		    name=arr[i]+"=";
 		}
 		if(arr.length>=2)
 		    name=name+arr[arr.length-2];
@@ -89,20 +89,18 @@ public class JDice {
 		prepend="  ";
 	    }
 	    int[] selectionIndices=new int[start+v.size()];
-//	    for(i=0;i<v.size();i++) {
+         for(i=0;i<v.size();i++) {
 		DieRoll dr=v.get(i);
 		RollResult rr=dr.makeRoll();
 		String toAdd=prepend+dr+"  =>  "+rr;
 		listItems.add(i+start,toAdd);
-	    }
+	}
 	    for(i=0;i<selectionIndices.length;i++) {
 		selectionIndices[i]=i;
 	    }
 	    resultList.setListData(listItems);
 	    resultList.	setSelectedIndices(selectionIndices);
 	}
-
-
     }
     public static void main(String[] args) {
 	Vector<String> v=new Vector<String>();
@@ -146,7 +144,7 @@ public class JDice {
 			  "d100",
 			  CLEAR};
 	for(String button: buttons ){ // int i=0;i<buttons.length;i++ -> String button : buttons 
-	    JButton newButton = new JButton(buttons); //xoa[i]
+	    JButton newButton = new JButton(); //xoa[i]
 	    rightSide.add(newButton);
 	    newButton.addActionListener(jdl);
 	}
@@ -157,4 +155,4 @@ public class JDice {
 			  
     }
 
-}
+    }
