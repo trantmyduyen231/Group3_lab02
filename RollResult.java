@@ -25,7 +25,7 @@ public class RollResult{ //thieu " { "
     int total;
     int modifier;
     Vector<Integer> rolls;  // thieu " ;" 
-    private RollResult(int total, int modifier, Vector<Integer >rolls){
+    private RollResult(int total, int modifier, Vector<Integer >rolls){ // thieu )
 	this.total=total;
 	this.modifier=modifier;
 	this.rolls=rolls;  //thieu dau cham giua this va rolls
